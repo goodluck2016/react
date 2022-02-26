@@ -9,7 +9,7 @@ function App() {
     <div className={styles.App}>
       <div className={styles.robotList}>
         {
-          robots.map( r => <Robot id={r.id} email={r.email} name={r.name} /> )
+          robots.map( r => <Robot id={r.id} email={r.email} name={r.name} key={r.id} /> )
         }
       </div>
     </div>

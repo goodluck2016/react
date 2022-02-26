@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './assets/images/logo.svg';
-import robots from './mockdata/robots.json';
+// import robots from './mockdata/robots.json';
 import Robot from './components/Robot';
 import styles from  './App.module.css';
 import ShoppingCart from './components/ShoppingCart';
@@ -8,7 +8,8 @@ import ShoppingCart from './components/ShoppingCart';
 interface Props {}
 
 interface State {
-  robotGallery: any[]
+  robotGallery: any[],
+  count: number
 }
 
 class App extends React.Component<Props, State> {
@@ -16,6 +17,7 @@ class App extends React.Component<Props, State> {
     super(props);
     this.state = {
       robotGallery: [],
+      count: 0
     };
   }
 
@@ -32,6 +34,22 @@ class App extends React.Component<Props, State> {
           <img src={logo} className={styles.appLogo} alt="logo" />
           <h1>罗伯特机器人炫酷吊炸天online购物平台的名字特别特别长</h1>
         </div>
+        <button
+          onClick={() => {
+            // setState异步更新，同步执行
+            this.setState((preState, preProps) => {
+              return { count: preState.count + 1 }
+            }, () => {
+              console.log('count', this.state.count);
+            });
+            this.setState((preState, preProps) => {
+              return { count: preState.count + 1 }
+            }, () => {
+              console.log('count', this.state.count);
+            });
+          }}
+        >点我</button>
+        <span>count: {this.state.count}</span>
         <ShoppingCart />
         <div className={styles.robotList}>
           {

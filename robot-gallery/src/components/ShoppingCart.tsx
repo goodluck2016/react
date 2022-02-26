@@ -14,13 +14,15 @@ class ShoppingCart extends React.Component<Props, State> {
     this.state = {
       isOpen: false,
     };
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e: any) {
-    console.log('e.target', e.target)
-    console.log('e.currentTarget', e.currentTarget) // 事件处理绑定的元素
-    this.setState({ isOpen: !this.state.isOpen });
+  handleClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    console.log("e.target ", e.target) // 事件发生的元素
+    console.log("e.currentTarget ", e.currentTarget) // 事件处理绑定的元素
+    if((e.target as HTMLElement).nodeName === "SPAN"){
+      this.setState({ isOpen: !this.state.isOpen });
+    }
   }
 
   render() {

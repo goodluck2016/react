@@ -13,6 +13,8 @@ interface State {
 }
 
 class App extends React.Component<Props, State> {
+  // * 生命周期 阶段1: 初始化
+  // 初始化组件 state
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -21,11 +23,27 @@ class App extends React.Component<Props, State> {
     };
   }
 
+  // 在组件创建好dom元素胡，挂载进页面时调用
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(data => this.setState({ robotGallery: data }));
   }
+
+  // * 生命周期 阶段2: 更新
+  // 在组件接收到一个新的 prop(更新后)时被调用
+  // componentWillReceiveProps
+  // state getDerivedStateFromProps(nextProps, prevState) {}
+  // shouldComponentUpdate() {
+  //   return nextState.some != this.state.some
+  // }
+  // 组件更新后调用
+  componentDidUpdate() {}
+
+  // * 生命周期 阶段3: 销毁
+  // 组件销毁后调用
+  // 可当作析构函数 destructor 来使用
+  componentWillUnmount() {}
 
   render() {
     return (

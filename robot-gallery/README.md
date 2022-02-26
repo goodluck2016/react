@@ -44,3 +44,18 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## React 17
+没有新功能
+逐步升级，允许多个react版本共存
+事件委托机制改变
+向原生浏览器靠拢
+删除事件池
+useEffect清理操作改为异步操作
+JSX不可返回undefined
+删除部分私有API
+
+## React未来展望
+React v17不是过的版本，而是承上启下的战略版本
+未来将会更加强调函数式组件
+支持微前端架构

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ShoppingCart.module.css';
+import { FiShoppingCart } from 'react-icons/fi';
 
 interface Props {}
 
@@ -13,6 +14,13 @@ class ShoppingCart extends React.Component<Props, State> {
     this.state = {
       isOpen: false,
     };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e: any) {
+    console.log('e.target', e.target)
+    console.log('e.currentTarget', e.currentTarget) // 事件处理绑定的元素
+    this.setState({ isOpen: !this.state.isOpen });
   }
 
   render() {
@@ -20,11 +28,10 @@ class ShoppingCart extends React.Component<Props, State> {
       <div className={styles.cartContainer}>
         <button
           className={styles.button}
-          onClick={() => {
-            this.setState({ isOpen: !this.state.isOpen });
-          }}
+          onClick={this.handleClick}
         >
-          购物车 2 (件)
+          <FiShoppingCart />
+          <span>购物车 2 (件)</span>
         </button>
         <div
           className={styles.cartDropDown}

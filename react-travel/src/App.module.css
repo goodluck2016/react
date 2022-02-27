@@ -1,0 +1,10 @@
+.App {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.page-content {
+  width: 1280px;
+  height: 85vh;
+  background: #fafafa;
+  margin-left: auto;
+  margin-right: auto;
+}

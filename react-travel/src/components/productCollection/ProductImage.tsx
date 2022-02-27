@@ -19,7 +19,8 @@ export const ProductImage: React.FC<PropsType> = ({ id, size, imageSrc, price, t
       )}
       <div>
         <Typography.Text type='secondary'>
-          {title.slice(0, 25)}
+          {title}
+          {/* {title.slice(0, 25)} */}
         </Typography.Text>
         <Typography.Text type='danger' strong>
           ￥ {price} 起

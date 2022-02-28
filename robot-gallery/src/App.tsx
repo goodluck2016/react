@@ -6,7 +6,7 @@ import styles from  './App.module.css';
 import ShoppingCart from './components/ShoppingCart';
 
 interface Props {
-  username: string
+  // username: string
 }
 
 interface State {
@@ -77,7 +77,7 @@ const App: React.FC<Props> = (props) => {
           <img src={logo} className={styles.appLogo} alt="logo" />
           <h1>罗伯特机器人炫酷吊炸天online购物平台的名字特别特别长</h1>
         </div>
-        <h2>{props.username}</h2>
+        {/* <h2>{props.username}</h2> */}
         {/* <Child username={props.username} /> */}
         <button
           onClick={() => {

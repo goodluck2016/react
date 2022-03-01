@@ -77,7 +77,7 @@ class HeaderComponent extends React.Component<PropsType> {
           <span onClick={() => history.push('/')}>
             <img src={logo} alt="logo" className={styles['App-logo']} />
             <Typography.Title level={2}  className={styles.title}>
-            {t('header.title')}
+              {t('header.title')}
             </Typography.Title>
           </span>
           <Input.Search

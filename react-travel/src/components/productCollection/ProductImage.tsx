@@ -20,9 +20,9 @@ const ProductImageComponent: React.FC<PropsType> = ({
   location,
   match
 }) => {
-  console.log(history)
-  console.log(location)
-  console.log(match)
+  // console.log(history)
+  // console.log(location)
+  // console.log(match)
   return (
     // <div onClick={() => history.push(`detail/${id}`)}>
     <Link to={`detail/${id}`}>

@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './Footer.module.css';
+import { useTranslation, withTranslation } from 'react-i18next';
 
 export const Footer: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className={styles.footer}>
-      版权所有 @React 驴子网
+      {t('footer.detail')}
     </div>
   );
 }

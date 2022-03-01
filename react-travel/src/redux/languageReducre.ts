@@ -1,6 +1,6 @@
-interface LanguageState {
-  language: 'en' | 'zh',
-  languageList: {name: string, code: strign}[]
+export interface LanguageState {
+  language: 'en' | 'zh';
+  languageList: {name: string; code: string}[];
 }
 
 const defaultState: LanguageState = {
@@ -9,8 +9,8 @@ const defaultState: LanguageState = {
     { name: '中文', code: 'zh' },
     { name: 'Englist', code: 'en' }
   ]
-}
+};
 
 export default (state = defaultState, action) => {
-  return state
-}
+  return state;
+};

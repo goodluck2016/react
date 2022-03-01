@@ -1,4 +1,5 @@
 import i18n from 'i18next';
+import { CHANGE_LANGUAGE, ADD_LANGUAGE } from './languageActions';
 
 export interface LanguageState {
   language: 'en' | 'zh';
@@ -16,10 +17,10 @@ const defaultState: LanguageState = {
 export default (state = defaultState, action) => {
   // console.log(state, action);
   switch(action.type) {
-    case 'change_language':
+    case CHANGE_LANGUAGE:
       i18n.changeLanguage(action.payload);
       return { ...state, language: action.payload }
-    case 'add_language':
+    case ADD_LANGUAGE:
       return {
         ...state,
         languageList: [...state.languageList, action.payload]

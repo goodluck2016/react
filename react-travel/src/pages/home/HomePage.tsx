@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-  Header,
-  Footer,
   SideMenu,
   Carousel,
   ProductCollection,
@@ -16,6 +14,7 @@ import { withTranslation, WithTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { giveMeDataActionCreator } from '../../redux/recommendProducts/recommendProductsActions';
+import { MainLayout } from '../../layouts/mainLayout';
 
 const mapStateToProps =(state: RootState) => {
   return {
@@ -63,10 +62,7 @@ class HomePageComponent extends React.Component<PropsType> {
       return <div>网站出差：{error}</div>
     }
     return (
-    <>
-      <Header />
-      {/* 页面内容 content */}
-      <div className={styles['page-content']}>
+      <MainLayout>
         <Row style={{ marginTop: 20 }}>
           <Col span={6}>
             <SideMenu />
@@ -104,9 +100,7 @@ class HomePageComponent extends React.Component<PropsType> {
           products={productList[2].touristRoutes}
         />
         <Partner />
-      </div>
-      <Footer />
-    </>
+      </MainLayout>
     )
   }
 }

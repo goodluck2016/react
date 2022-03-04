@@ -85,7 +85,7 @@ export const Header: React.FC = () => {
             <Button.Group className={styles['button-group']}>
               <span className={styles['username']}>{t('header.welcome')}</span>
               <Typography.Text strong className={styles['username']}>{username}</Typography.Text>
-              <Button>              
+              <Button onClick={() => history.push('/shoppingCart')}>              
                 {t('header.shoppingCart')}
               </Button>
               <Button onClick={onLogout}>

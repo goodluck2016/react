@@ -1,7 +1,11 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import styles from './SignInForm.module.css';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { signIn } from '../../redux/user/slice';
+import { useDispatch } from 'react-redux';
+import { useSelector } from '../../redux/hooks';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router';
 
 const layout = {
   labelCol: { span: 8 },
@@ -12,19 +16,36 @@ const tailLayout = {
 };
 
 export const SignInForm = () => {
+  const loading = useSelector(s => s.user.loading)
+  const jwt = useSelector(s => s.user.token)
+  const error = useSelector(s => s.user.error)
+
+  const dispatch = useDispatch();
   const history = useHistory();
+
+  useEffect(() => {
+    if(jwt !== null) {
+      history.push('/');
+    }
+  }, [jwt])
+
   const onFinish = async (values: any) => {
     console.log('Success:', values);
-    try {
-      await axios.post('http://123.56.149.216:8080/auth/register', {
-        email: values.username,
-        password: values.password,
-        confirmPassword: values.confirm,
-      });
-      history.push('/signIn/');
-    } catch (error) {
-      alert('注册失败！');
-    }
+    dispatch(signIn({
+      email: values.username,
+      password: values.password
+    }))
+
+    // try {
+    //   await axios.post('http://123.56.149.216:8080/auth/register', {
+    //     email: values.username,
+    //     password: values.password,
+    //     confirmPassword: values.confirm,
+    //   });
+    //   history.push('/signIn/');
+    // } catch (error) {
+    //   alert('注册失败！');
+    // }
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -66,7 +87,7 @@ export const SignInForm = () => {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" loading={loading}>
           Submit
         </Button>
       </Form.Item>

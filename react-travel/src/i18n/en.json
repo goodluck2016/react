@@ -21,7 +21,10 @@
       "high_end":"High-end",
       "outdoor":"Outdoor",
       "insurance":"Insurance",
-      "partner": "Buisness Partner"
+      "partner": "Buisness Partner",
+      "shoppingCart": "Shopping Cart",
+      "signOut": "Sign Out",
+      "welcome": "Welcome back "
   },
   "footer": {
       "detail" : "All rights reserved @ ReactTravel.com"

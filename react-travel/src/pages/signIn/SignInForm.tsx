@@ -35,17 +35,6 @@ export const SignInForm = () => {
       email: values.username,
       password: values.password
     }))
-
-    // try {
-    //   await axios.post('http://123.56.149.216:8080/auth/register', {
-    //     email: values.username,
-    //     password: values.password,
-    //     confirmPassword: values.confirm,
-    //   });
-    //   history.push('/signIn/');
-    // } catch (error) {
-    //   alert('注册失败！');
-    // }
   };
 
   const onFinishFailed = (errorInfo: any) => {

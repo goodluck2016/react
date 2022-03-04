@@ -39,6 +39,9 @@ export const Header: React.FC = () => {
   const jwt = useSelector(s => s.user.token)
   const [username, setUsername] = useState('')
 
+  const shoppingCartItems = useSelector(s => s.shoppingCart.items)
+  const shoppingCartLoading = useSelector(s => s.shoppingCart.loading)
+
   useEffect(() => {
     if(jwt) {
       const token = jwt_decode<JwtPayload>(jwt)
@@ -85,8 +88,11 @@ export const Header: React.FC = () => {
             <Button.Group className={styles['button-group']}>
               <span className={styles['username']}>{t('header.welcome')}</span>
               <Typography.Text strong className={styles['username']}>{username}</Typography.Text>
-              <Button onClick={() => history.push('/shoppingCart')}>              
-                {t('header.shoppingCart')}
+              <Button
+                loading={shoppingCartLoading}
+                onClick={() => history.push('/shoppingCart')}
+              >              
+                {t('header.shoppingCart')}({shoppingCartItems.length})
               </Button>
               <Button onClick={onLogout}>
                 {t('header.signOut')}

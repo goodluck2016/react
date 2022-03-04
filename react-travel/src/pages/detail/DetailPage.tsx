@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import styles from './DetailPage.module.css';
 import { RouteComponentProps, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Spin, Row, Col, Divider, Typography, Anchor, Menu, DatePicker, Space } from 'antd';
+import { Spin, Row, Col, Divider, Typography, Anchor, Menu, DatePicker, Space, Button } from 'antd';
 import { ProductIntro, ProductComments } from '../../components';
 import { commentMockData } from './mockup';
 import { MainLayout } from '../../layouts/mainLayout';
 import { productDetailSlice, getProductDetail } from '../../redux/productDetail/slice';
 import { useSelector } from '../../redux/hooks';
 import { useDispatch } from 'react-redux';
+import { ShoppingCartOutlined, ShoppingOutlined } from '@ant-design/icons';
+import { addShoppingCartItem } from '../../redux/shoppingCart/slice';
 
 const { RangePicker } = DatePicker;
 
@@ -22,6 +24,9 @@ export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = () => {
   const error = useSelector(state => state.productDetail.error);
   const product = useSelector(state => state.productDetail.data);  
   const dispatch = useDispatch();
+
+  const jwt = useSelector(s => s.user.token) as string
+  const shoppingCartLoading = useSelector(s => s.shoppingCart.loading)
 
   useEffect(() => {
     const fetchData = async() => {
@@ -66,6 +71,17 @@ export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = () => {
           />
           </Col>
           <Col span={11}>
+            <Button
+              style={{marginTop: 50, marginBottom: 30, display: 'block'}}
+              type='primary'
+              danger
+              loading={shoppingCartLoading}    
+              onClick={() => {
+                dispatch(addShoppingCartItem({jwt, touristRouteId: product.id}))
+              }}        
+            >
+              <ShoppingOutlined />加入购物车
+            </Button>
             <RangePicker open style={{ marginTop: 20 }} />
           </Col>
         </Row>      
